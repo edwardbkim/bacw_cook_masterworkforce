@@ -190,6 +190,10 @@ p{color:var(--muted);font-size:13.5px;line-height:1.65}
 .comp-body p:last-child{margin-bottom:0}
 .comp-label{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--subtle);margin-top:10px;margin-bottom:4px}
 .comp-implication{font-size:12.5px;color:var(--text);line-height:1.55}
+.comp-sources{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line);font-size:10.5px;line-height:1.55;color:var(--muted)}
+.comp-sources strong{display:block;color:var(--text-sub);font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-size:9.5px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace}
+.comp-sources a{color:var(--text-sub);text-decoration:underline;text-decoration-color:rgba(0,0,0,.22);text-underline-offset:2px}
+.comp-sources a:hover{color:var(--crimson);text-decoration-color:var(--crimson)}
 .comp-divider{height:1px;background:var(--line);margin:10px 0}
 .comp-card.event{background:var(--amber-lt);border-color:var(--amber-bd)}
 .comp-card.event:hover{background:#fefce8}
@@ -264,19 +268,17 @@ p{color:var(--muted);font-size:13.5px;line-height:1.65}
 .gallery-ctrls{display:flex;gap:8px;flex-shrink:0}
 .carousel-viewport{overflow:hidden;position:relative}
 .carousel-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1);padding:0 0 10px;margin-left:max(28px,calc(50vw - 620px + 28px))}
-.gcard{flex:0 0 auto;width:360px;max-width:calc(100vw - 60px);border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/11;box-shadow:var(--shadow-md);text-decoration:none;color:#fff;display:block;transition:transform .3s,box-shadow .3s}
-.gcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);text-decoration:none}
-.gcard-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.gcard:hover .gcard-img{transform:scale(1.06)}
-.gcard-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,24,41,0) 0%,rgba(11,24,41,.35) 55%,rgba(11,24,41,.92) 100%)}
-.gcard-accent{position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;z-index:2}
-.gcard-stripe{height:4px;width:44px;border-radius:2px}
-.gcard-tag{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(255,255,255,.95);color:var(--text);padding:5px 10px;border-radius:20px;backdrop-filter:blur(10px)}
-.gcard-content{position:absolute;inset:auto 0 0 0;padding:22px 24px;z-index:2;color:#fff}
-.gcard-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:6px}
-.gcard-title{font-family:'Libre Baskerville',serif;font-size:24px;line-height:1.15;font-weight:400;margin-bottom:8px;letter-spacing:-.2px}
-.gcard-desc{font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.82);margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.gcard-cta{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#fff}
+.gcard{flex:0 0 auto;width:360px;max-width:calc(100vw - 60px);border-radius:14px;overflow:hidden;position:relative;aspect-ratio:16/11;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-md);text-decoration:none;color:var(--text);display:flex;flex-direction:column;padding:26px 24px 22px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.gcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#d6d6d6;text-decoration:none}
+.gcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gcard-accent,#111)}
+.gcard-accent{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:22px}
+.gcard-stripe{display:none}
+.gcard-tag{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:#111;color:#fff;padding:5px 10px;border-radius:20px}
+.gcard-content{display:flex;flex-direction:column;flex:1}
+.gcard-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px}
+.gcard-title{font-family:'Libre Baskerville',serif;font-size:24px;line-height:1.15;font-weight:400;margin-bottom:10px;letter-spacing:-.2px;color:var(--text)}
+.gcard-desc{font-size:12.5px;line-height:1.55;color:var(--text-sub);margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.gcard-cta{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--crimson);margin-top:auto}
 .gcard-cta svg{width:14px;height:14px;transition:transform .25s}
 .gcard:hover .gcard-cta svg{transform:translateX(4px)}
 .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
@@ -361,7 +363,7 @@ footer a:hover{color:#fff}
   <div class="alert-inner">
     <div class="alert-pip"></div>
     <div class="alert-text">
-      <strong>Active Recruitment Window: Bloomington, IN:</strong> Novo Nordisk is cutting ~400 jobs at its Bloomington facility effective May 2026. These are skilled biomanufacturing workers with QA, production, and maintenance profiles directly transferable to medical device manufacturing. Time-sensitive.
+      <strong>Active Recruitment Window — Bloomington, IN:</strong> Novo Nordisk is cutting ~400 jobs at its Bloomington facility effective May 2026. These are skilled biomanufacturing workers with QA, production, and maintenance profiles directly transferable to medical device manufacturing. Time-sensitive. <a href="https://www.xtalks.com/layoffs-hit-novo-nordisks-ex-catalent-site-despite-turnaround-efforts-4732/" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:2px; font-size:11.5px; opacity:.85;">[Source: Xtalks / BioSpace]</a>
     </div>
     <button class="alert-cta" onclick="document.getElementById('competition').scrollIntoView({behavior:'smooth'})">View Competitive Intelligence →</button>
   </div>
@@ -445,7 +447,7 @@ footer a:hover{color:#fff}
           <div class="kpi-row"><span class="kpi-label">Median age · Mobility rate</span><span class="kpi-val">32.6 · 21.8%</span></div>
         </div>
         <div class="mcard-ft">
-          <a class="market-link" href="https://edwardbkim.github.io/bacw_bloomington_msa/" target="_blank">Full market report →</a>
+          <a class="market-link" href="[BLOOMINGTON_REPORT_URL]" target="_blank">Full market report →</a>
           <span class="badge badge-red">Simtra also expanding nearby</span>
         </div>
       </div>
@@ -472,7 +474,7 @@ footer a:hover{color:#fff}
           <div class="kpi-row"><span class="kpi-label">Median age · Mobility rate</span><span class="kpi-val">41.1 · 11.3%</span></div>
         </div>
         <div class="mcard-ft">
-          <a class="market-link" href="https://edwardbkim.github.io/bacw_cook_winstonsalem/" target="_blank">Full market report →</a>
+          <a class="market-link" href="[WINSTON_REPORT_URL]" target="_blank">Full market report →</a>
           <span class="badge badge-amber">Reynolds American sets wage floor</span>
         </div>
       </div>
@@ -499,7 +501,7 @@ footer a:hover{color:#fff}
           <div class="kpi-row"><span class="kpi-label">Median age · Mobility rate</span><span class="kpi-val">40.7 · 9.7%</span></div>
         </div>
         <div class="mcard-ft">
-          <a class="market-link" href="https://edwardbkim.github.io/bacw_cook_canton/" target="_blank">Full market report →</a>
+          <a class="market-link" href="[CANTON_REPORT_URL]" target="_blank">Full market report →</a>
           <span class="badge badge-green">Only positive mortgage gap</span>
         </div>
       </div>
@@ -520,7 +522,7 @@ footer a:hover{color:#fff}
           <div class="embed-ph">
             <div class="embed-ph-icon">📊</div>
             <h3>Master Power BI Dashboard</h3>
-            <p>We'll paste the published embed URL into the <code>src</code> attribute of the iframe above. All five pages will render inline once published.</p>
+            <p>Paste the published embed URL into the <code>src</code> attribute of the iframe above. All five pages will render inline once published.</p>
           </div>
         </div>
         <div class="embed-bar">
@@ -577,22 +579,22 @@ footer a:hover{color:#fff}
       <div class="finding">
         <span class="finding-chip" style="background:var(--red-lt); color:var(--red)">Housing · Critical</span>
         <h3>Homeownership is structurally unaffordable in two of three markets</h3>
-        <p>Bloomington (−$8.31/hr) and Winston-Salem (−$7.98/hr) production workers cannot afford to buy a home on a single income at the local production median wage. This isn't a wage problem; it's a structural retention risk. Workers who can't build equity are workers who leave. Canton is the only Cook market where the math works: +$0.80/hr over the homeownership threshold, on a $107,100 median home value.</p>
+        <p>Bloomington (−$8.31/hr) and Winston-Salem (−$7.98/hr) production workers cannot afford to buy a home on a single income at the local production median wage. This isn't a wage problem — it's a structural retention risk. Workers who can't build equity are workers who leave. Canton is the only Cook market where the math works: +$0.80/hr over the homeownership threshold, on a $107,100 median home value.</p>
       </div>
       <div class="finding">
         <span class="finding-chip" style="background:var(--amber-lt); color:var(--amber)">Bloomington · Opportunity</span>
         <h3>Novo Nordisk's exit creates a rare talent injection</h3>
-        <p>~400 skilled biomanufacturing workers will enter the Bloomington labor market in May 2026. The Assembler LQ of 3.97 means Bloomington already has the deepest concentration of this exact worker profile in the country. Cook should move immediately: Simtra BioPharma, which is <em>expanding</em> in the same market, will be absorbing from the same pool.</p>
+        <p>~400 skilled biomanufacturing workers will enter the Bloomington labor market in May 2026. The Assembler LQ of 3.97 means Bloomington already has the deepest concentration of this exact worker profile in the country. Cook should move immediately — Simtra BioPharma, which is <em>expanding</em> in the same market, will be absorbing from the same pool.</p>
       </div>
       <div class="finding">
         <span class="finding-chip" style="background:var(--green-lt); color:var(--green)">Winston-Salem · Scale</span>
         <h3>Winston-Salem is Cook's most scalable long-term recruiting market</h3>
-        <p>22,950 production workers, +7.4% population growth, 11.3% mobility rate (vs. 21.8% in Bloomington). The challenge here isn't access, it's differentiation. Reynolds American (2,500 employees) sets the effective wage floor in Forsyth County. Cook must benchmark against RAI, not just OEWS medians, and compete on career pathway, stability, and brand.</p>
+        <p>22,950 production workers, +7.4% population growth, 11.3% mobility rate (vs. 21.8% in Bloomington). The challenge here isn't access — it's differentiation. Reynolds American (2,500 employees) sets the effective wage floor in Forsyth County. Cook must benchmark against RAI, not just OEWS medians, and compete on career pathway, stability, and brand.</p>
       </div>
       <div class="finding">
         <span class="finding-chip" style="background:var(--canton-lt); color:var(--canton)">Canton · Retention</span>
         <h3>Canton's affordability edge should anchor the retention strategy</h3>
-        <p>Canton workers can afford a home at median production wages, something no Cook worker in Bloomington or Winston-Salem can do on a single income. This is a concrete, communicable retention differentiator. The risk is structural: the population has declined 11.5% since 2015. Cook's Canton strategy must prioritize tenure over volume. Caterpillar's UAW wage history shapes expectations; Cook competes on stability and medical device prestige.</p>
+        <p>Canton workers can afford a home at median production wages — something no Cook worker in Bloomington or Winston-Salem can do on a single income. This is a concrete, communicable retention differentiator. The risk is structural: the population has declined 11.5% since 2015. Cook's Canton strategy must prioritize tenure over volume. Caterpillar's UAW wage history shapes expectations; Cook competes on stability and medical device prestige.</p>
       </div>
     </div>
   </div>
@@ -603,14 +605,14 @@ footer a:hover{color:#fff}
     <div class="callout blue" style="margin-bottom:20px;">
       <p><strong>How to read this section:</strong> Each block shows the employers who actually compete for Cook's blue-collar production workers — assemblers, QA inspectors, maintenance mechanics, machine operators — in each specific MSA. These are not abstract market reports; they are the employers that show up when Cook's workers consider leaving or when candidates receive competing offers.</p>
     </div>
- 
+
     <!-- BLOOMINGTON -->
     <div class="comp-market-block" data-market="bloom">
       <div class="comp-market-hd" style="background:var(--bloom-lt); border-color:#bfdbfe;">
         <div class="comp-market-stripe" style="background:var(--bloom)"></div>
         <div>
           <div class="comp-market-label" style="color:var(--bloom)">Bloomington, IN · Monroe + Owen Counties</div>
-          <div class="comp-market-name">Life Sciences Cluster: Concentrated, Competitive, and Active</div>
+          <div class="comp-market-name">Life Sciences Cluster — Concentrated, Competitive, and Active</div>
           <div class="comp-market-desc">Bloomington is the #1 small MSA for medical device employment concentration and #2 for biopharma. Cook competes inside a deep but narrow specialist pool.</div>
         </div>
       </div>
@@ -629,12 +631,12 @@ footer a:hover{color:#fff}
           </div>
           <div class="comp-body">
             <div class="comp-label">What This Means for Cook</div>
-            <p class="comp-implication"><strong>Recruitment window: act now.</strong> These are not generic production workers. They are trained biomanufacturing professionals: sterile fill/finish operators, QA analysts, validation specialists, and maintenance mechanics. Their skills map directly onto medical device manufacturing. Cook should stand up a targeted outreach campaign before Simtra, Boston Scientific, and other area employers absorb this pool.</p>
+            <p class="comp-implication"><strong>Recruitment window — act now.</strong> These are not generic production workers. They are trained biomanufacturing professionals: sterile fill/finish operators, QA analysts, validation specialists, and maintenance mechanics. Their skills map directly onto medical device manufacturing. Cook should stand up a targeted outreach campaign before Simtra, Boston Scientific, and other area employers absorb this pool.</p>
             <div class="comp-divider"></div>
             <div class="comp-label">Retention Signal</div>
             <p>Novo's regulatory troubles (FDA warning letter, Jul 2025) and global restructuring signal pharma industry volatility. Cook's medical device stability is a credible counternarrative for workers who want out of the pharma cycle.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.xtalks.com/layoffs-hit-novo-nordisks-ex-catalent-site-despite-turnaround-efforts-4732/" target="_blank" rel="noopener">Xtalks / BioSpace: Novo Bloomington layoffs (Apr 2026)</a> · <a href="https://www.in.gov/dwd/warn/" target="_blank" rel="noopener">Indiana DWD WARN Act filings</a> · <a href="https://www.novonordisk.com/news-and-media.html" target="_blank" rel="noopener">Novo Nordisk newsroom</a> · <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters" target="_blank" rel="noopener">FDA warning letters</a>
+              <a href="https://www.xtalks.com/layoffs-hit-novo-nordisks-ex-catalent-site-despite-turnaround-efforts-4732/" target="_blank" rel="noopener">Xtalks / BioSpace — Novo Bloomington layoffs (Apr 2026)</a> · <a href="https://www.in.gov/dwd/warn/" target="_blank" rel="noopener">Indiana DWD WARN Act filings</a> · <a href="https://www.novonordisk.com/news-and-media.html" target="_blank" rel="noopener">Novo Nordisk newsroom</a> · <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters" target="_blank" rel="noopener">FDA warning letters</a>
             </div>
           </div>
         </div>
@@ -644,18 +646,18 @@ footer a:hover{color:#fff}
               <div class="comp-name">Simtra BioPharma Solutions</div>
               <div class="comp-sector">Biopharmaceutical Manufacturing</div>
             </div>
-            <span class="badge badge-red">High Threat: Expanding</span>
+            <span class="badge badge-red">High Threat — Expanding</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-red">~500 → ~630 workers</span>
             <span class="comp-headcount">$241M expansion · +130 jobs (Aug 2025)</span>
           </div>
           <div class="comp-body">
-            <p>Simtra is Cook's most acute ongoing competitor in Bloomington. They are growing not contracting. Their production specialist and QA analyst postings run $22–38/hr, above Cook's likely range. 33 active roles on Indeed confirm persistent hiring activity from the same labor pool Cook draws from.</p>
+            <p>Simtra is Cook's most acute ongoing competitor in Bloomington. They are growing — not contracting. Their production specialist and QA analyst postings run $22–38/hr, above Cook's likely range. 33 active roles on Indeed confirm persistent hiring activity from the same labor pool Cook draws from.</p>
             <div class="comp-label">What This Means for Cook</div>
-            <p class="comp-implication">Simtra's expansion directly compresses the Bloomington production labor supply at exactly the moment Novo's layoffs temporarily expand it. Cook needs to move quickly on Novo's displaced workers, Simtra will be recruiting the same people.</p>
+            <p class="comp-implication">Simtra's expansion directly compresses the Bloomington production labor supply at exactly the moment Novo's layoffs temporarily expand it. Cook needs to move quickly on Novo's displaced workers — Simtra will be recruiting the same people.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.idsnews.com/article/2025/08/simtra-biopharma-solutions-investment-expansion-monroe-county-jobs" target="_blank" rel="noopener">Indiana Daily Student, Simtra expansion (Aug 2025)</a> · <a href="https://www.simtra.com/" target="_blank" rel="noopener">Simtra newsroom</a> · <a href="https://www.in.gov/iedc/news-events/" target="_blank" rel="noopener">Indiana Economic Development Corp.</a>
+              <a href="https://www.idsnews.com/article/2025/08/simtra-biopharma-solutions-investment-expansion-monroe-county-jobs" target="_blank" rel="noopener">Indiana Daily Student — Simtra expansion (Aug 2025)</a> · <a href="https://www.simtra.com/" target="_blank" rel="noopener">Simtra newsroom</a> · <a href="https://www.in.gov/iedc/news-events/" target="_blank" rel="noopener">Indiana Economic Development Corp.</a>
             </div>
           </div>
         </div>
@@ -665,7 +667,7 @@ footer a:hover{color:#fff}
               <div class="comp-name">Boston Scientific</div>
               <div class="comp-sector">Medical Device Manufacturing</div>
             </div>
-            <span class="badge badge-amber">Moderate: Active</span>
+            <span class="badge badge-amber">Moderate — Active</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-blue">Spencer facility (~15 mi)</span>
@@ -674,9 +676,9 @@ footer a:hover{color:#fff}
           <div class="comp-body">
             <p>Boston Scientific's Spencer, IN facility draws from the same Monroe/Owen County labor shed as Cook Bloomington. Their 13 active Indiana postings confirm persistent recruiting activity. As a medical device peer, BSC is a natural destination for Cook workers exploring alternatives.</p>
             <div class="comp-label">Retention Risk</div>
-            <p class="comp-implication">Career mobility risk, especially for workers who value medical device prestige and want a larger corporate environment. BSC's brand recognition may attract mid-tenure Cook employees.</p>
+            <p class="comp-implication">Career mobility risk — especially for workers who value medical device prestige and want a larger corporate environment. BSC's brand recognition may attract mid-tenure Cook employees.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.bostonscientific.com/en-US/careers.html" target="_blank" rel="noopener">Boston Scientific, careers &amp; locations</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000885725&amp;type=10-K" target="_blank" rel="noopener">BSC 10-K (SEC EDGAR)</a> · Indeed employer listings, Feb–Apr 2026
+              <a href="https://www.bostonscientific.com/en-US/careers.html" target="_blank" rel="noopener">Boston Scientific — careers &amp; locations</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000885725&amp;type=10-K" target="_blank" rel="noopener">BSC 10-K (SEC EDGAR)</a> · Indeed employer listings, Feb–Apr 2026
             </div>
           </div>
         </div>
@@ -693,24 +695,24 @@ footer a:hover{color:#fff}
             <span class="comp-headcount">$18–24/hr posted range</span>
           </div>
           <div class="comp-body">
-            <p>Consistent presence in Bloomington production and operator searches. Competes for entry-level production workers in the $18–24/hr band, overlapping with Cook's Assembler range.</p>
+            <p>Consistent presence in Bloomington production and operator searches. Competes for entry-level production workers in the $18–24/hr band — overlapping with Cook's Assembler range.</p>
             <div class="comp-label">Recruitment Implication</div>
             <p class="comp-implication">Low strategic threat but contributes to entry-level wage floor pressure. Candidates choosing between Cook and Printpack are likely new-to-market production workers where offer speed and onboarding quality matter most.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.printpack.com/locations/" target="_blank" rel="noopener">Printpack: facility network</a> · Indeed Bloomington postings, 30-day window, Feb–Apr 2026
+              <a href="https://www.printpack.com/locations/" target="_blank" rel="noopener">Printpack — facility network</a> · Indeed Bloomington postings, 30-day window, Feb–Apr 2026
             </div>
           </div>
         </div>
       </div>
     </div>
- 
+
     <!-- WINSTON-SALEM -->
     <div class="comp-market-block" data-market="ws">
       <div class="comp-market-hd" style="background:var(--ws-lt); border-color:#bbf7d0;">
         <div class="comp-market-stripe" style="background:var(--ws)"></div>
         <div>
           <div class="comp-market-label" style="color:var(--ws)">Winston-Salem, NC · 5-County MSA</div>
-          <div class="comp-market-name">Industrial Heritage Market: Fragmented, Differentiation-Driven</div>
+          <div class="comp-market-name">Industrial Heritage Market — Fragmented, Differentiation-Driven</div>
           <div class="comp-market-desc">Winston-Salem's blue-collar labor market is shaped by legacy manufacturers (tobacco, apparel) and growing precision manufacturing. Reynolds American sets the effective wage floor.</div>
         </div>
       </div>
@@ -721,7 +723,7 @@ footer a:hover{color:#fff}
               <div class="comp-name">Reynolds American (BAT)</div>
               <div class="comp-sector">Tobacco Manufacturing</div>
             </div>
-            <span class="badge badge-red">High: Sets Wage Floor</span>
+            <span class="badge badge-red">High — Sets Wage Floor</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-red">2,500 Forsyth Co. employees</span>
@@ -732,7 +734,7 @@ footer a:hover{color:#fff}
             <div class="comp-label">What This Means for Cook</div>
             <p class="comp-implication"><strong>Critical benchmark:</strong> Cook's wage strategy in Winston-Salem must be benchmarked against Reynolds American, not just OEWS medians. The $20.08/hr production median understates what experienced production workers expect.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank" rel="noopener">Greater Winston-Salem, Inc. Major Employers</a> · <a href="https://www.bat.com/annualreport" target="_blank" rel="noopener">BAT PLC Annual Report: RAI subsidiary disclosures</a> · <a href="https://wstoday.6amcity.com/city-guide/work/top-industries-employers-winston-salem-nc" target="_blank" rel="noopener">WStoday — top WS employers (2025)</a>
+              <a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank" rel="noopener">Greater Winston-Salem, Inc. — Major Employers</a> · <a href="https://www.bat.com/annualreport" target="_blank" rel="noopener">BAT PLC Annual Report — RAI subsidiary disclosures</a> · <a href="https://wstoday.6amcity.com/city-guide/work/top-industries-employers-winston-salem-nc" target="_blank" rel="noopener">WStoday — top WS employers (2025)</a>
             </div>
           </div>
         </div>
@@ -753,7 +755,7 @@ footer a:hover{color:#fff}
             <div class="comp-label">Emerging Opportunity</div>
             <p class="comp-implication">If Gildan restructures local operations, Cook has an opportunity to recruit dislodged Hanesbrands assembly and packaging workers. These workers have stable employment histories and precision hand-assembly experience. Monitor closely through mid-2026.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://gildancorp.com/en/media/press-releases/" target="_blank" rel="noopener">Gildan, acquisition press release (2024)</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001359841&amp;type=8-K" target="_blank" rel="noopener">HanesBrands 8-K, transaction close (SEC EDGAR)</a> · <a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank" rel="noopener">Greater Winston-Salem employer list</a>
+              <a href="https://gildancorp.com/en/media/press-releases/" target="_blank" rel="noopener">Gildan — acquisition press release (2024)</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001359841&amp;type=8-K" target="_blank" rel="noopener">HanesBrands 8-K — transaction close (SEC EDGAR)</a> · <a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank" rel="noopener">Greater Winston-Salem employer list</a>
             </div>
           </div>
         </div>
@@ -763,7 +765,7 @@ footer a:hover{color:#fff}
               <div class="comp-name">Collins Aerospace (RTX)</div>
               <div class="comp-sector">Aerospace Manufacturing</div>
             </div>
-            <span class="badge badge-red">High: Skilled Roles</span>
+            <span class="badge badge-red">High — Skilled Roles</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-red">Major Forsyth Co. employer</span>
@@ -781,10 +783,10 @@ footer a:hover{color:#fff}
         <div class="comp-card indirect">
           <div class="comp-card-hd">
             <div>
-              <div class="comp-name">Eli Lilly: NC Facilities</div>
+              <div class="comp-name">Eli Lilly — NC Facilities</div>
               <div class="comp-sector">Pharmaceutical Manufacturing</div>
             </div>
-            <span class="badge badge-blue">Regional Signal: Not Local</span>
+            <span class="badge badge-blue">Regional Signal — Not Local</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-blue">Concord (80 mi) &amp; Durham (90 mi)</span>
@@ -793,9 +795,9 @@ footer a:hover{color:#fff}
           <div class="comp-body">
             <p><strong>Important clarification:</strong> Lilly is not a direct Winston-Salem MSA competitor for hourly production workers. However, Lilly's $70k+ average pay has reshaped statewide pharma manufacturing wage expectations.</p>
             <div class="comp-label">What This Means for Cook</div>
-            <p class="comp-implication">NC production workers increasingly compare themselves to statewide pharma benchmarks not just local wages. This perception gap should be addressed in compensation communications.</p>
+            <p class="comp-implication">NC production workers increasingly compare themselves to statewide pharma benchmarks — not just local wages. This perception gap should be addressed in compensation communications.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://investor.lilly.com/news-releases" target="_blank" rel="noopener">Eli Lilly investor news: Concord NC expansion (2023)</a> · <a href="https://www.bls.gov/oes/current/oes_nc.htm" target="_blank" rel="noopener">BLS OEWS: NC pharma manufacturing</a> · Triangle Business Journal coverage
+              <a href="https://investor.lilly.com/news-releases" target="_blank" rel="noopener">Eli Lilly investor news — Concord NC expansion (2023)</a> · <a href="https://www.bls.gov/oes/current/oes_nc.htm" target="_blank" rel="noopener">BLS OEWS — NC pharma manufacturing</a> · Triangle Business Journal coverage
             </div>
           </div>
         </div>
@@ -816,20 +818,20 @@ footer a:hover{color:#fff}
             <div class="comp-label">Recruitment Implication</div>
             <p class="comp-implication">Cook's differentiation against Smurfit Westrock should be the medical device career track and Cook's mission-driven positioning.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.smurfitwestrock.com/" target="_blank" rel="noopener">Smurfit Westrock: merger close (Jul 2024)</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001732845" target="_blank" rel="noopener">Smurfit Westrock SEC filings</a> · Indeed Winston-Salem postings, Feb–Apr 2026
+              <a href="https://www.smurfitwestrock.com/" target="_blank" rel="noopener">Smurfit Westrock — merger close (Jul 2024)</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001732845" target="_blank" rel="noopener">Smurfit Westrock SEC filings</a> · Indeed Winston-Salem postings, Feb–Apr 2026
             </div>
           </div>
         </div>
       </div>
     </div>
- 
+
     <!-- CANTON -->
     <div class="comp-market-block" data-market="canton">
       <div class="comp-market-hd" style="background:var(--canton-lt); border-color:#fde68a;">
         <div class="comp-market-stripe" style="background:var(--canton)"></div>
         <div>
           <div class="comp-market-label" style="color:var(--canton)">Peoria / Canton, IL · Fulton County</div>
-          <div class="comp-market-name">Caterpillar Country: Wage Expectations Set by UAW, Pool Defined by CAT Cycles</div>
+          <div class="comp-market-name">Caterpillar Country — Wage Expectations Set by UAW, Pool Defined by CAT Cycles</div>
           <div class="comp-market-desc">Caterpillar's East Peoria complex defines what blue-collar manufacturing wages look like in this MSA. Cook competes against a UAW-calibrated wage expectation that exceeds its likely pay range.</div>
         </div>
       </div>
@@ -840,7 +842,7 @@ footer a:hover{color:#fff}
               <div class="comp-name">Caterpillar Inc.</div>
               <div class="comp-sector">Heavy Equipment Manufacturing</div>
             </div>
-            <span class="badge badge-red">High: Wage Benchmark Threat</span>
+            <span class="badge badge-red">High — Wage Benchmark Threat</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-red">~10,000 Peoria area workers</span>
@@ -853,7 +855,7 @@ footer a:hover{color:#fff}
             <div class="comp-label">Retention Risk</div>
             <p class="comp-implication">Any Cook Canton worker with prior CAT experience is a CAT recall risk. Medical device mission, stability narrative, and non-cyclical employment are the key differentiators.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://www.caterpillar.com/en/news.html" target="_blank" rel="noopener">Caterpillar newsroom</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000018230&amp;type=10-K" target="_blank" rel="noopener">Caterpillar 10-K (SEC EDGAR)</a> · <a href="https://uaw974.org/" target="_blank" rel="noopener">UAW Local 974, CAT bargaining unit</a> · <a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank" rel="noopener">Fulton County IL workforce statistics</a>
+              <a href="https://www.caterpillar.com/en/news.html" target="_blank" rel="noopener">Caterpillar newsroom</a> · <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000018230&amp;type=10-K" target="_blank" rel="noopener">Caterpillar 10-K (SEC EDGAR)</a> · <a href="https://uaw974.org/" target="_blank" rel="noopener">UAW Local 974 — CAT bargaining unit</a> · <a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank" rel="noopener">Fulton County IL workforce statistics</a>
             </div>
           </div>
         </div>
@@ -872,7 +874,7 @@ footer a:hover{color:#fff}
           <div class="comp-body">
             <p>ITW's diversified Peoria-area operations produce industrial and specialty products with precision manufacturing requirements similar to medical device work.</p>
             <div class="comp-label">What This Means for Cook</div>
-            <p class="comp-implication">Mid-tier threat for skilled and experienced workers. ITW is a stable non-cyclical employer, the same value proposition Cook offers, which makes it a closer peer competitor than CAT.</p>
+            <p class="comp-implication">Mid-tier threat for skilled and experienced workers. ITW is a stable non-cyclical employer — the same value proposition Cook offers — which makes it a closer peer competitor than CAT.</p>
             <div class="comp-sources"><strong>Sources</strong>
               <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000049826&amp;type=10-K" target="_blank" rel="noopener">Illinois Tool Works 10-K (SEC EDGAR)</a> · <a href="https://www.itw.com/newsroom/" target="_blank" rel="noopener">ITW newsroom</a> · Indeed Peoria listings, Feb–Apr 2026
             </div>
@@ -887,15 +889,15 @@ footer a:hover{color:#fff}
             <span class="badge badge-amber">Local Market Anchor</span>
           </div>
           <div class="comp-status-line">
-            <span class="badge badge-red">750 Canton employees: #1 local employer</span>
+            <span class="badge badge-red">750 Canton employees — #1 local employer</span>
             <span class="comp-headcount">$16–28/hr support roles</span>
           </div>
           <div class="comp-body">
-            <p>Graham Health System is Canton's largest employer; more than 4× Cook's local headcount (~185 employees). As the dominant Canton institution, Graham has deep community ties.</p>
+            <p>Graham Health System is Canton's largest employer — more than 4× Cook's local headcount (~185 employees). As the dominant Canton institution, Graham has deep community ties.</p>
             <div class="comp-label">What This Means for Cook</div>
             <p class="comp-implication">For Canton-rooted workers, Graham is the most likely alternative if they leave Cook but want to stay local. Cook's retention strategy in Canton must emphasize manufacturing career advancement, the mission of medical device work, and the homeownership wage gap story.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank" rel="noopener">Fulton County IL: largest employers &amp; workforce statistics</a> · <a href="https://www.grahamhospital.org/" target="_blank" rel="noopener">Graham Health System, corporate site</a>
+              <a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank" rel="noopener">Fulton County IL — largest employers &amp; workforce statistics</a> · <a href="https://www.grahamhospital.org/" target="_blank" rel="noopener">Graham Health System — corporate site</a>
             </div>
           </div>
         </div>
@@ -905,7 +907,7 @@ footer a:hover{color:#fff}
               <div class="comp-name">Maui Jim</div>
               <div class="comp-sector">Optical / Consumer Products Mfg.</div>
             </div>
-            <span class="badge badge-amber">Moderate: QA Roles</span>
+            <span class="badge badge-amber">Moderate — QA Roles</span>
           </div>
           <div class="comp-status-line">
             <span class="badge badge-amber">5 active Peoria postings</span>
@@ -916,20 +918,20 @@ footer a:hover{color:#fff}
             <div class="comp-label">Retention Risk</div>
             <p class="comp-implication">Niche but real risk for Cook's QA workforce specifically. Maui Jim's consumer brand and lower-pressure quality environment may appeal to workers experiencing fatigue in medical device regulatory environments.</p>
             <div class="comp-sources"><strong>Sources</strong>
-              <a href="https://careers.mauijim.com/" target="_blank" rel="noopener">Maui Jim careers, Peoria facility</a> · <a href="https://www.mauijim.com/us/en_US/history" target="_blank" rel="noopener">Maui Jim, company history &amp; Peoria HQ</a> · Indeed Peoria optical postings, Feb–Apr 2026
+              <a href="https://careers.mauijim.com/" target="_blank" rel="noopener">Maui Jim careers — Peoria facility</a> · <a href="https://www.mauijim.com/us/en_US/history" target="_blank" rel="noopener">Maui Jim — company history &amp; Peoria HQ</a> · Indeed Peoria optical postings, Feb–Apr 2026
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- DEEP DIVES -->
+
+  <!-- DEEP DIVES — TABBED -->
   <div class="section" id="deep-dives">
     <div class="section-eyebrow">Market Deep-Dives</div>
     <div class="section-hd">
       <div class="section-hd-text">
-        <h2>Three parallel data profiles, switch to compare.</h2>
+        <h2>Three parallel data profiles — switch to compare.</h2>
         <p>Labor supply, wages &amp; demand, and housing affordability for each market. The tab selection syncs with the market filter in the top nav.</p>
       </div>
     </div>
@@ -982,7 +984,7 @@ footer a:hover{color:#fff}
                 <div class="deep-stat-2"><div class="deep-stat-2-l">Production workforce</div><div class="deep-stat-2-v" style="color:var(--text)">7,020</div><div class="deep-stat-2-sub">Smallest of three markets</div></div>
                 <div class="deep-stat-2"><div class="deep-stat-2-l">Assembler LQ</div><div class="deep-stat-2-v" style="color:var(--text)">3.97</div><div class="deep-stat-2-sub">4× national concentration</div></div>
                 <div class="deep-stat-2"><div class="deep-stat-2-l">Median age</div><div class="deep-stat-2-v" style="color:var(--text)">32.6 yrs</div></div>
-                <div class="deep-stat-2"><div class="deep-stat-2-l">Mobility rate</div><div class="deep-stat-2-v red">21.8%</div><div class="deep-stat-2-sub">High churn, IU student effect</div></div>
+                <div class="deep-stat-2"><div class="deep-stat-2-l">Mobility rate</div><div class="deep-stat-2-v red">21.8%</div><div class="deep-stat-2-sub">High churn — IU student effect</div></div>
                 <div class="deep-stat-2"><div class="deep-stat-2-l">Population trend (10-yr)</div><div class="deep-stat-2-v" style="color:var(--text)">+0.4%</div><div class="deep-stat-2-sub">Flat</div></div>
               </div>
               <div class="tab-panel-col" style="color:var(--bloom)">
@@ -1006,7 +1008,7 @@ footer a:hover{color:#fff}
             </div>
             <div class="tab-panel-footer" style="background:var(--bloom-lt);border-color:#bfdbfe;">
               <div class="tab-panel-footer-icon" style="background:var(--bloom);color:#fff">⚡</div>
-              <div><strong>Active window:</strong> Novo Nordisk's ~400-worker layoff (May 2026) briefly expands the specialist pool. Simtra is expanding simultaneously; Cook's outreach must precede competitors.</div>
+              <div><strong>Active window:</strong> Novo Nordisk's ~400-worker layoff (May 2026) briefly expands the specialist pool. Simtra is expanding simultaneously — Cook's outreach must precede competitors.</div>
             </div>
           </div>
         </div>
@@ -1130,8 +1132,8 @@ footer a:hover{color:#fff}
       <div class="rec" data-market="bloom">
         <div class="rec-num">01</div>
         <span class="rec-market" style="color:var(--bloom); background:var(--bloom-lt);">Bloomington · Immediate</span>
-        <h3>Activate a Novo Nordisk recruitment campaign, now</h3>
-        <p>~400 skilled biomanufacturing workers enter the market in May 2026. Simtra BioPharma is expanding and will recruit from the same pool. Cook has a narrow window. Stand up targeted outreach: LinkedIn InMail campaigns, local job fair presence, direct referral incentives. Prioritize QA analysts, production technicians, and maintenance mechanics.</p>
+        <h3>Activate a Novo Nordisk recruitment campaign — now</h3>
+        <p>~400 skilled biomanufacturing workers enter the market in May 2026. Simtra BioPharma is expanding and will recruit from the same pool. Cook has a narrow window. Stand up targeted outreach — LinkedIn InMail campaigns, local job fair presence, direct referral incentives. Prioritize QA analysts, production technicians, and maintenance mechanics.</p>
         <div class="rec-action">Time to act: weeks, not months →</div>
       </div>
 
@@ -1139,15 +1141,15 @@ footer a:hover{color:#fff}
         <div class="rec-num">02</div>
         <span class="rec-market" style="color:var(--bloom); background:var(--bloom-lt);">Bloomington · Retention</span>
         <h3>Address the −$8.31/hr mortgage gap with targeted housing assistance</h3>
-        <p>Bloomington city workers cannot buy a home at the median production wage. Ellettsville and Spencer, where Cook also operates, have materially better affordability (+$4.98/hr and +$6.98/hr rent gaps respectively). Consider housing assistance programs, down payment support, or employer-assisted mortgage initiatives.</p>
+        <p>Bloomington city workers cannot buy a home at the median production wage. Ellettsville and Spencer — where Cook also operates — have materially better affordability (+$4.98/hr and +$6.98/hr rent gaps respectively). Consider housing assistance programs, down payment support, or employer-assisted mortgage initiatives.</p>
         <div class="rec-action">Frame as a retention ROI, not a benefit cost →</div>
       </div>
 
       <div class="rec" data-market="ws">
         <div class="rec-num">03</div>
         <span class="rec-market" style="color:var(--ws); background:var(--ws-lt);">Winston-Salem · Wages</span>
-        <h3>Benchmark against Reynolds American not OEWS medians</h3>
-        <p>Reynolds American (2,500 Forsyth Co. employees, BAT benefits) sets the effective wage floor. Cook's offers priced at OEWS median ($19.08/hr assembler) will consistently lose candidates. The assembler posted range is already $22–24/hr, $3–5 above OEWS. Price offers at or above the posted market.</p>
+        <h3>Benchmark against Reynolds American — not OEWS medians</h3>
+        <p>Reynolds American (2,500 Forsyth Co. employees, BAT benefits) sets the effective wage floor. Cook's offers priced at OEWS median ($19.08/hr assembler) will consistently lose candidates. The assembler posted range is already $22–24/hr — $3–5 above OEWS. Price offers at or above the posted market.</p>
         <div class="rec-action">Compensate at posted range, not OEWS benchmark →</div>
       </div>
 
@@ -1155,7 +1157,7 @@ footer a:hover{color:#fff}
         <div class="rec-num">04</div>
         <span class="rec-market" style="color:var(--ws); background:var(--ws-lt);">Winston-Salem · Opportunity</span>
         <h3>Monitor Hanesbrands/Gildan for displacement events</h3>
-        <p>Gildan's December 2025 acquisition of Hanesbrands (2,400 WS employees) creates workforce uncertainty. Post-acquisition restructuring is common. Hanesbrands assembly and packaging workers have directly transferable dexterous manufacturing skills. Establish a monitoring cadence, any Gildan restructuring announcement is a recruitment trigger.</p>
+        <p>Gildan's December 2025 acquisition of Hanesbrands (2,400 WS employees) creates workforce uncertainty. Post-acquisition restructuring is common. Hanesbrands assembly and packaging workers have directly transferable dexterous manufacturing skills. Establish a monitoring cadence — any Gildan restructuring announcement is a recruitment trigger.</p>
         <div class="rec-action">Set up job alert monitoring for Hanesbrands layoff news →</div>
       </div>
 
@@ -1198,11 +1200,11 @@ footer a:hover{color:#fff}
       </button>
     </div>
   </div>
- 
+
   <div class="carousel-viewport">
     <div class="carousel-track" id="carTrack">
- 
-      <a href="https://edwardbkim.github.io/bacw_bloomington_msa/" class="gcard" target="_blank" style="--gcard-accent:var(--bloom)">
+
+      <a href="[BLOOMINGTON_REPORT_URL]" class="gcard" target="_blank" style="--gcard-accent:var(--bloom)">
         <div class="gcard-accent">
           <div class="gcard-stripe"></div>
           <span class="gcard-tag">Scarcity-Driven</span>
@@ -1216,8 +1218,8 @@ footer a:hover{color:#fff}
           </div>
         </div>
       </a>
- 
-      <a href="https://edwardbkim.github.io/bacw_cook_winstonsalem/" class="gcard" target="_blank" style="--gcard-accent:var(--ws)">
+
+      <a href="[WINSTON_REPORT_URL]" class="gcard" target="_blank" style="--gcard-accent:var(--ws)">
         <div class="gcard-accent">
           <div class="gcard-stripe"></div>
           <span class="gcard-tag">Largest Pool</span>
@@ -1231,8 +1233,8 @@ footer a:hover{color:#fff}
           </div>
         </div>
       </a>
- 
-      <a href="https://edwardbkim.github.io/bacw_cook_canton/" class="gcard" target="_blank" style="--gcard-accent:var(--canton)">
+
+      <a href="[CANTON_REPORT_URL]" class="gcard" target="_blank" style="--gcard-accent:var(--canton)">
         <div class="gcard-accent">
           <div class="gcard-stripe"></div>
           <span class="gcard-tag">Affordability Leader</span>
@@ -1246,7 +1248,7 @@ footer a:hover{color:#fff}
           </div>
         </div>
       </a>
- 
+
       <a href="#dashboard" class="gcard" style="--gcard-accent:var(--crimson)">
         <div class="gcard-accent">
           <div class="gcard-stripe"></div>
@@ -1261,10 +1263,10 @@ footer a:hover{color:#fff}
           </div>
         </div>
       </a>
- 
+
     </div>
   </div>
- 
+
   <div class="carousel-dots" id="carDots">
     <button class="c-dot active" data-i="0" aria-label="Slide 1"></button>
     <button class="c-dot" data-i="1" aria-label="Slide 2"></button>
@@ -1272,26 +1274,51 @@ footer a:hover{color:#fff}
     <button class="c-dot" data-i="3" aria-label="Slide 4"></button>
   </div>
 </section>
-  
+
 <!-- FOOTER -->
 <footer id="sources">
   <div class="footer-inner" style="max-width:1240px; margin:0 auto; padding:0 28px;">
     <div class="footer-grid">
       <div>
         <h4>Data Sources</h4>
+        <div style="font-size:11px; color:rgba(255,255,255,.42); letter-spacing:.8px; text-transform:uppercase; margin:14px 0 6px; font-weight:600;">Primary Labor &amp; Demographic Data</div>
         <ol>
-          <li><a href="https://www.bls.gov/oes/" target="_blank">BLS OEWS — Occupational Employment &amp; Wage Statistics, May 2024</a></li>
-          <li><a href="https://fred.stlouisfed.org" target="_blank">FRED / BLS — MSA unemployment series, 2015–Sep 2025</a></li>
-          <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank">U.S. Census Bureau — ACS 2024 1-Year Estimates (demographics)</a></li>
-          <li><a href="https://www.census.gov/quickfacts/" target="_blank">Census QuickFacts — ACS 2020–2024 housing estimates</a></li>
+          <li><a href="https://www.bls.gov/oes/" target="_blank" rel="noopener">BLS OEWS — Occupational Employment &amp; Wage Statistics, May 2024</a></li>
+          <li><a href="https://www.bls.gov/cew/" target="_blank" rel="noopener">BLS QCEW — Quarterly Census of Employment &amp; Wages (industry &amp; employer detail)</a></li>
+          <li><a href="https://fred.stlouisfed.org" target="_blank" rel="noopener">FRED / BLS — MSA unemployment series, 2015–Sep 2025</a></li>
+          <li><a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener">U.S. Census Bureau — ACS 2024 1-Year Estimates (demographics)</a></li>
+          <li><a href="https://www.census.gov/quickfacts/" target="_blank" rel="noopener">Census QuickFacts — ACS 2020–2024 housing estimates</a></li>
+          <li><a href="https://www.nar.realtor/research-and-statistics/housing-statistics/housing-affordability-index" target="_blank" rel="noopener">NAR — Housing Affordability Index (methodology)</a></li>
           <li>Job postings snapshot — manual multi-board (Indeed, LinkedIn, ZipRecruiter, Glassdoor), Feb–Apr 2026, 20-mi radius, 30-day window</li>
-          <li><a href="https://xtalks.com/layoffs-hit-novo-nordisks-ex-catalent-site-despite-turnaround-efforts-4732/" target="_blank">Novo Nordisk Bloomington layoff — Xtalks / BioSpace, Apr 2026</a></li>
-          <li><a href="https://www.idsnews.com/article/2025/08/simtra-biopharma-solutions-investment-expansion-monroe-county-jobs" target="_blank">Simtra BioPharma expansion — Indiana Daily Student, Aug 2025</a></li>
-          <li><a href="https://wstoday.6amcity.com/city-guide/work/top-industries-employers-winston-salem-nc" target="_blank">Winston-Salem major employers — WStoday / 6amCity, 2025</a></li>
-          <li><a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank">Greater Winston-Salem, Inc. — Major Employer list, 2025</a></li>
-          <li><a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank">Fulton County IL — Employment &amp; Workforce Statistics</a></li>
-          <li><a href="https://inuplands.org/industries/life-sciences/" target="_blank">Indiana Uplands — Life Sciences cluster profile</a></li>
         </ol>
+
+        <div style="font-size:11px; color:rgba(255,255,255,.42); letter-spacing:.8px; text-transform:uppercase; margin:18px 0 6px; font-weight:600;">Competitive Intelligence — Corporate &amp; Regulatory Filings</div>
+        <ol start="8">
+          <li><a href="https://www.sec.gov/edgar/searchedgar/companysearch" target="_blank" rel="noopener">SEC EDGAR — 10-K &amp; 8-K filings for all publicly-traded competitors named</a></li>
+          <li><a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters" target="_blank" rel="noopener">FDA Warning Letters — Novo Nordisk Bloomington (Jul 2025)</a></li>
+          <li><a href="https://www.in.gov/dwd/warn/" target="_blank" rel="noopener">Indiana DWD — WARN Act layoff notifications</a></li>
+          <li><a href="https://www.dol.gov/agencies/eta/layoffs/warn" target="_blank" rel="noopener">U.S. DOL — WARN Act public filings (cross-state)</a></li>
+          <li><a href="https://www.bat.com/annualreport" target="_blank" rel="noopener">BAT PLC Annual Report — Reynolds American subsidiary disclosures</a></li>
+          <li><a href="https://gildancorp.com/en/media/press-releases/" target="_blank" rel="noopener">Gildan Activewear — HanesBrands acquisition press releases</a></li>
+          <li><a href="https://www.rtx.com/news" target="_blank" rel="noopener">RTX (Raytheon Technologies) newsroom — Collins Aerospace disclosures</a></li>
+          <li><a href="https://www.caterpillar.com/en/news.html" target="_blank" rel="noopener">Caterpillar Inc. newsroom &amp; investor relations</a></li>
+          <li><a href="https://uaw974.org/" target="_blank" rel="noopener">UAW Local 974 — Caterpillar bargaining unit</a></li>
+          <li><a href="https://investor.lilly.com/news-releases" target="_blank" rel="noopener">Eli Lilly investor news — Concord &amp; Durham NC expansions</a></li>
+        </ol>
+
+        <div style="font-size:11px; color:rgba(255,255,255,.42); letter-spacing:.8px; text-transform:uppercase; margin:18px 0 6px; font-weight:600;">Regional Economic Development &amp; News</div>
+        <ol start="18">
+          <li><a href="https://xtalks.com/layoffs-hit-novo-nordisks-ex-catalent-site-despite-turnaround-efforts-4732/" target="_blank" rel="noopener">Xtalks / BioSpace — Novo Nordisk Bloomington layoff coverage (Apr 2026)</a></li>
+          <li><a href="https://www.idsnews.com/article/2025/08/simtra-biopharma-solutions-investment-expansion-monroe-county-jobs" target="_blank" rel="noopener">Indiana Daily Student — Simtra BioPharma $241M expansion (Aug 2025)</a></li>
+          <li><a href="https://www.in.gov/iedc/news-events/" target="_blank" rel="noopener">Indiana Economic Development Corporation — incentive announcements</a></li>
+          <li><a href="https://inuplands.org/industries/life-sciences/" target="_blank" rel="noopener">Indiana Uplands — Life Sciences cluster profile</a></li>
+          <li><a href="https://www.winstonsalem.com/economic-development/local-data/major-employers/" target="_blank" rel="noopener">Greater Winston-Salem, Inc. — Major Employer list (2025)</a></li>
+          <li><a href="https://wstoday.6amcity.com/city-guide/work/top-industries-employers-winston-salem-nc" target="_blank" rel="noopener">WStoday / 6amCity — top industries &amp; employers, Winston-Salem (2025)</a></li>
+          <li><a href="https://edpc.org/" target="_blank" rel="noopener">Economic Development Partnership of NC — state employer data</a></li>
+          <li><a href="https://fultoncountyil.gov/economic-development/employment-workforce-statistics/" target="_blank" rel="noopener">Fulton County IL — Employment &amp; Workforce Statistics</a></li>
+          <li><a href="https://greaterpeoriaedc.org/" target="_blank" rel="noopener">Greater Peoria EDC — regional employment &amp; sector data</a></li>
+        </ol>
+        <p style="font-size:10.5px; color:rgba(255,255,255,.35); margin-top:14px; line-height:1.6;">Corporate headcounts for named competitors triangulated across three independent sources (regional employer lists, corporate filings, and job-board hiring patterns). All figures cited are the most conservative estimate from the range where sources disagreed.</p>
       </div>
       <div>
         <h4>Navigation</h4>
@@ -1386,13 +1413,12 @@ footer a:hover{color:#fff}
   }
   function getVisibleCount(){
     if (!track || !cards[0]) return 1;
-    const viewportEl = track.parentElement;
-    if (!viewportEl) return 1;
-    const vw    = viewportEl.getBoundingClientRect().width;
     const cardW = cards[0].getBoundingClientRect().width;
     const style = getComputedStyle(track);
     const gap   = parseFloat(style.columnGap || style.gap || 20);
-    return Math.max(1, Math.floor((vw + gap) / (cardW + gap)));
+    /* Match the site's 1240px container (28px padding each side → 1184px content). */
+    const contentW = Math.min(window.innerWidth - 56, 1184);
+    return Math.max(1, Math.floor((contentW + gap) / (cardW + gap)));
   }
   function getMaxIdx(){
     return Math.max(0, total - getVisibleCount());
