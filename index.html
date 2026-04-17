@@ -57,13 +57,13 @@ code{font-family:'IBM Plex Mono',monospace;font-size:.85em;color:var(--muted)}
 .alert-cta:hover{background:#fef3c7}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,#0b1829 0%,#1e3a8a 55%,#1d4ed8 100%);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(59,130,246,.35),transparent 55%),radial-gradient(ellipse at bottom left,rgba(34,197,94,.12),transparent 50%);pointer-events:none}
+.hero{background:linear-gradient(135deg,#0a0a0a 0%,#171717 55%,#262626 100%);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(255,255,255,.12),transparent 55%),radial-gradient(ellipse at bottom left,rgba(255,255,255,.05),transparent 50%);pointer-events:none}
 .hero-inner{max-width:1240px;margin:0 auto;padding:72px 28px 56px;position:relative;z-index:1}
 .hero-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.4)}
 .hero h1{font-family:'Libre Baskerville',serif;font-size:46px;line-height:1.12;font-weight:700;max-width:900px;margin-bottom:18px;letter-spacing:-.5px}
-.hero h1 em{font-style:italic;color:#7dd3fc;font-weight:400}
+.hero h1 em{font-style:italic;color:#fafafa;font-weight:400}
 .hero-lede{font-size:16px;line-height:1.6;color:rgba(255,255,255,.75);max-width:700px;margin-bottom:36px}
 .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12)}
 .hero-stat{display:flex;flex-direction:column;gap:4px}
@@ -1164,8 +1164,8 @@ footer a:hover{color:#fff}
     <div class="carousel-track" id="carTrack">
 
       <a href="[BLOOMINGTON_REPORT_URL]" class="gcard" target="_blank">
-        <img class="gcard-img" alt="Bloomington, IN — life sciences corridor"
-             src="https://images.unsplash.com/photo-1581093458791-9d42e3c82a88?auto=format&fit=crop&w=1080&q=80"/>
+        <img class="gcard-img" alt="Bloomington, IN — downtown skyline"
+             src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=1080&q=80"/>
         <div class="gcard-overlay"></div>
         <div class="gcard-accent">
           <div class="gcard-stripe" style="background:#60a5fa"></div>
@@ -1182,8 +1182,8 @@ footer a:hover{color:#fff}
       </a>
 
       <a href="[WINSTON_REPORT_URL]" class="gcard" target="_blank">
-        <img class="gcard-img" alt="Winston-Salem, NC — industrial heritage"
-             src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1080&q=80"/>
+        <img class="gcard-img" alt="Winston-Salem, NC — downtown skyline"
+             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1080&q=80"/>
         <div class="gcard-overlay"></div>
         <div class="gcard-accent">
           <div class="gcard-stripe" style="background:#4ade80"></div>
@@ -1200,8 +1200,8 @@ footer a:hover{color:#fff}
       </a>
 
       <a href="[CANTON_REPORT_URL]" class="gcard" target="_blank">
-        <img class="gcard-img" alt="Canton, IL — affordability leader"
-             src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1080&q=80"/>
+        <img class="gcard-img" alt="Canton, IL — small-town Midwest skyline"
+             src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1080&q=80"/>
         <div class="gcard-overlay"></div>
         <div class="gcard-accent">
           <div class="gcard-stripe" style="background:#fbbf24"></div>
@@ -1357,16 +1357,38 @@ footer a:hover{color:#fff}
     const gap   = parseFloat(style.columnGap || style.gap || 20);
     return cards[0].getBoundingClientRect().width + gap;
   }
+  function getVisibleCount(){
+    if (!track || !cards[0]) return 1;
+    const viewportEl = track.parentElement;
+    if (!viewportEl) return 1;
+    const vw    = viewportEl.getBoundingClientRect().width;
+    const cardW = cards[0].getBoundingClientRect().width;
+    const style = getComputedStyle(track);
+    const gap   = parseFloat(style.columnGap || style.gap || 20);
+    return Math.max(1, Math.floor((vw + gap) / (cardW + gap)));
+  }
+  function getMaxIdx(){
+    return Math.max(0, total - getVisibleCount());
+  }
   function update(){
     if (!track) return;
+    const maxIdx = getMaxIdx();
+    if (idx > maxIdx) idx = maxIdx;
+    if (idx < 0) idx = 0;
     track.style.transform = `translateX(${-idx * step()}px)`;
-    dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+    dots.forEach((d,i) => {
+      d.classList.toggle('active', i === idx);
+      d.style.display = (i > maxIdx) ? 'none' : '';
+    });
     if (prevBtn) prevBtn.disabled = idx <= 0;
-    if (nextBtn) nextBtn.disabled = idx >= total - 1;
+    if (nextBtn) nextBtn.disabled = idx >= maxIdx;
   }
   if (prevBtn) prevBtn.addEventListener('click', () => { if (idx > 0){ idx--; update(); }});
-  if (nextBtn) nextBtn.addEventListener('click', () => { if (idx < total - 1){ idx++; update(); }});
-  dots.forEach(d => d.addEventListener('click', function(){ idx = parseInt(this.dataset.i); update(); }));
+  if (nextBtn) nextBtn.addEventListener('click', () => { if (idx < getMaxIdx()){ idx++; update(); }});
+  dots.forEach(d => d.addEventListener('click', function(){
+    const target = parseInt(this.dataset.i);
+    if (target <= getMaxIdx()){ idx = target; update(); }
+  }));
   window.addEventListener('resize', update);
   update();
 
@@ -1376,7 +1398,7 @@ footer a:hover{color:#fff}
     viewport.setAttribute('tabindex', '0');
     viewport.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft' && idx > 0){ idx--; update(); e.preventDefault(); }
-      if (e.key === 'ArrowRight' && idx < total - 1){ idx++; update(); e.preventDefault(); }
+      if (e.key === 'ArrowRight' && idx < getMaxIdx()){ idx++; update(); e.preventDefault(); }
     });
   }
 
